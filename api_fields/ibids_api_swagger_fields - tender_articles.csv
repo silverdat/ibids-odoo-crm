@@ -1,0 +1,15 @@
+field,description
+tender_id,from compras
+article_number,from compras
+article_description,from compras
+lot_info,from compras
+unit,from compras
+quantity,from compras
+unit_price,from compras
+total_price,from compras
+unspsc_code,from compras
+unspsc_description,from compras
+ibids_estimated_price,from ibids: as given by estimated vs awarded delta
+avahi_price_25_quartile,from ibids: avg of where 25% of prices are
+avahi_price_75_quartile,from ibids: avg of where 75% of prices are
+competitiveness_rank,from ibids: #of tenders for given unspsc / # of offers for that unspsc

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tender Form View -->
+    <record id="view_govcon_tender_form" model="ir.ui.view">
+        <field name="name">govcon.tender.form</field>
+        <field name="model">govcon.tender</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_sync_with_api" type="object" string="Sync with API" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_generate_documents" type="object" string="Generate Documents" class="oe_highlight" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,evaluation,awarded"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="tender_id" placeholder="Tender ID"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="procuring_entity"/>
+                            <field name="tender_value" widget="monetary"/>
+                            <field name="procurement_method"/>
+                            <field name="tender_type_id"/>
+                            <field name="stage_id"/>
+                        </group>
+                        <group>
+                            <field name="priority" widget="priority"/>
+                            <field name="user_id"/>
+                            <field name="team_id"/>
+                            <field name="win_probability" widget="percentage"/>
+                            <field name="estimated_value" widget="monetary"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Basic Information Tab -->
+                    <notebook>
+                        <page string="Basic Information">
+                            <group>
+                                <group>
+                                    <field name="description"/>
+                                    <field name="all_tender_dates"/>
+                                    <field name="tender_url"/>
+                                    <field name="ibids_gpt_url"/>
+                                </group>
+                                <group>
+                                    <field name="date_created"/>
+                                    <field name="date_published"/>
+                                    <field name="date_deadline"/>
+                                    <field name="date_evaluation"/>
+                                    <field name="date_awarded"/>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <!-- Budget &amp; Financial Tab -->
+                        <page string="Budget &amp; Financial">
+                            <group>
+                                <group>
+                                    <field name="budget_appropriation_certificate"/>
+                                    <field name="budget_appropriation_value" widget="monetary"/>
+                                    <field name="budget_source"/>
+                                    <field name="actual_value" widget="monetary"/>
+                                </group>
+                                <group>
+                                    <field name="define_advance_payments"/>
+                                    <field name="advance_payment_pct" widget="percentage" attrs="{'invisible': [('define_advance_payments', '=', False)]}"/>
+                                    <field name="define_warranties"/>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <!-- Compliance &amp; Requirements Tab -->
+                        <page string="Compliance &amp; Requirements">
+                            <group>
+                                <group>
+                                    <field name="seriousness_of_the_offer"/>
+                                    <field name="offer_seriousness_pct" widget="percentage" attrs="{'invisible': [('seriousness_of_the_offer', '=', False)]}"/>
+                                    <field name="compliance"/>
+                                    <field name="compliance_pct" widget="percentage" attrs="{'invisible': [('compliance', '=', False)]}"/>
+                                    <field name="extra_civil_contractual_liability"/>
+                                </group>
+                                <group>
+                                    <field name="tag_ids" widget="many2many_tags"/>
+                                    <field name="category_ids" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <!-- Documents &amp; Links Tab -->
+                        <page string="Documents &amp; Links">
+                            <group>
+                                <group>
+                                    <field name="link_all_pliego_docs"/>
+                                    <field name="tender_generator_link_other"/>
+                                    <field name="f33_tender_link"/>
+                                </group>
+                                <group>
+                                    <field name="document_count"/>
+                                    <field name="document_ids" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <!-- Communication Tab -->
+                        <page string="Communication">
+                            <group>
+                                <field name="tender_messages"/>
+                                <field name="tender_mail_summary_gpt"/>
+                            </group>
+                        </page>
+                        
+                        <!-- Tender Lines Tab -->
+                        <page string="Tender Lines">
+                            <field name="line_count"/>
+                            <field name="total_line_value" widget="monetary"/>
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="article_number"/>
+                                    <field name="article_description"/>
+                                    <field name="lot_info"/>
+                                    <field name="unit"/>
+                                    <field name="quantity"/>
+                                    <field name="unit_price" widget="monetary"/>
+                                    <field name="total_price" widget="monetary"/>
+                                    <field name="unspsc_code"/>
+                                    <field name="unspsc_description"/>
+                                    <field name="ibids_estimated_price" widget="monetary"/>
+                                    <field name="avahi_price_25_quartile" widget="monetary"/>
+                                    <field name="avahi_price_75_quartile" widget="monetary"/>
+                                    <field name="competitiveness_rank"/>
+                                    <field name="price_variance" widget="percentage"/>
+                                    <field name="price_competitiveness"/>
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        <!-- Notes Tab -->
+                        <page string="Notes">
+                            <group>
+                                <field name="notes"/>
+                                <field name="internal_notes"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tender Tree View -->
+    <record id="view_govcon_tender_tree" model="ir.ui.view">
+        <field name="name">govcon.tender.tree</field>
+        <field name="model">govcon.tender</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="tender_id"/>
+                <field name="procuring_entity"/>
+                <field name="tender_value" widget="monetary"/>
+                <field name="procurement_method"/>
+                <field name="stage_id"/>
+                <field name="priority" widget="priority"/>
+                <field name="user_id"/>
+                <field name="date_deadline"/>
+                <field name="win_probability" widget="percentage"/>
+                <field name="line_count"/>
+                <field name="total_line_value" widget="monetary"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tender Kanban View -->
+    <record id="view_govcon_tender_kanban" model="ir.ui.view">
+        <field name="name">govcon.tender.kanban</field>
+        <field name="model">govcon.tender</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" class="o_kanban_small_column">
+                <field name="tender_id"/>
+                <field name="procuring_entity"/>
+                <field name="tender_value"/>
+                <field name="stage_id"/>
+                <field name="user_id"/>
+                <field name="priority"/>
+                <field name="win_probability"/>
+                <field name="date_deadline"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="tender_id"/>
+                                        </strong>
+                                    </div>
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <field name="procuring_entity"/>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="tender_value" widget="monetary"/>
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <field name="win_probability" widget="percentage"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Tender Search View -->
+    <record id="view_govcon_tender_search" model="ir.ui.view">
+        <field name="name">govcon.tender.search</field>
+        <field name="model">govcon.tender</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="tender_id"/>
+                <field name="procuring_entity"/>
+                <field name="description"/>
+                <field name="procurement_method"/>
+                <field name="user_id"/>
+                <field name="stage_id"/>
+                <field name="tender_type_id"/>
+                <field name="tag_ids"/>
+                <field name="category_ids"/>
+                <filter string="My Tenders" name="my_tenders" domain="[('user_id', '=', uid)]"/>
+                <filter string="High Priority" name="high_priority" domain="[('priority', 'in', ['2', '3'])]"/>
+                <filter string="Overdue" name="overdue" domain="[('date_deadline', '&lt;', context_today())]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="Under Evaluation" name="evaluation" domain="[('state', '=', 'evaluation')]"/>
+                <filter string="Awarded" name="awarded" domain="[('state', '=', 'awarded')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Stage" name="group_stage" context="{'group_by': 'stage_id'}"/>
+                    <filter string="Assigned To" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Tender Type" name="group_type" context="{'group_by': 'tender_type_id'}"/>
+                    <filter string="Priority" name="group_priority" context="{'group_by': 'priority'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Creation Date" name="group_create_date" context="{'group_by': 'create_date:day'}"/>
+                    <filter string="Deadline" name="group_deadline" context="{'group_by': 'date_deadline:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tender Action -->
+    <record id="action_govcon_tender" model="ir.actions.act_window">
+        <field name="name">Tenders</field>
+        <field name="res_model">govcon.tender</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_my_tenders': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first tender!
+            </p>
+            <p>
+                Track government contract opportunities and manage your bidding process.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_govcon_root"
+              name="Government CRM"
+              sequence="10"/>
+    
+    <menuitem id="menu_govcon_tender"
+              name="Tenders"
+              parent="menu_govcon_root"
+              action="action_govcon_tender"
+              sequence="10"/>
+</odoo> 

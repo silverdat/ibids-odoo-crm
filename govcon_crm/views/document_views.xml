@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Document Template Form View -->
+        <record id="view_govcon_document_template_form" model="ir.ui.view">
+            <field name="name">govcon.document.template.form</field>
+            <field name="model">govcon.document.template</field>
+            <field name="arch" type="xml">
+                <form string="Document Template">
+                    <header>
+                        <button name="create_standard_sncc_forms" string="Create Standard SNCC Forms" 
+                                type="object" class="btn-primary"/>
+                    </header>
+                    
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" placeholder="Template Name"/></h1>
+                        </div>
+                        
+                        <group>
+                            <group>
+                                <field name="form_code"/>
+                                <field name="template_type"/>
+                                <field name="document_category"/>
+                                <field name="is_sncc_standard_form"/>
+                            </group>
+                            <group>
+                                <field name="mandatory_fields_count"/>
+                                <field name="estimated_completion_time"/>
+                                <field name="requires_notarization"/>
+                                <field name="auto_generate"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <field name="description"/>
+                            <field name="required_for_procedures"/>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Field Mappings">
+                                <field name="field_mappings">
+                                    <tree editable="bottom">
+                                        <field name="template_field_name"/>
+                                        <field name="odoo_field_path"/>
+                                        <field name="default_value"/>
+                                        <field name="is_required"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            
+                            <page string="Prerequisites">
+                                <field name="prerequisite_forms" widget="many2many_tags"/>
+                            </page>
+                            
+                            <page string="Tender Types">
+                                <field name="tender_type_ids" widget="many2many_tags"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Document Template Tree View -->
+        <record id="view_govcon_document_template_tree" model="ir.ui.view">
+            <field name="name">govcon.document.template.tree</field>
+            <field name="model">govcon.document.template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="form_code"/>
+                    <field name="template_type"/>
+                    <field name="document_category"/>
+                    <field name="mandatory_fields_count"/>
+                    <field name="estimated_completion_time"/>
+                    <field name="is_sncc_standard_form"/>
+                    <field name="auto_generate"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Document Template Search View -->
+        <record id="view_govcon_document_template_search" model="ir.ui.view">
+            <field name="name">govcon.document.template.search</field>
+            <field name="model">govcon.document.template</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="form_code"/>
+                    <field name="template_type"/>
+                    <field name="document_category"/>
+                    <filter string="SNCC Standard Forms" name="sncc_standard" domain="[('is_sncc_standard_form', '=', True)]"/>
+                    <filter string="Auto Generate" name="auto_generate" domain="[('auto_generate', '=', True)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Document Category" name="group_by_category" context="{'group_by': 'document_category'}"/>
+                        <filter string="Template Type" name="group_by_type" context="{'group_by': 'template_type'}"/>
+                        <filter string="Required for Procedures" name="group_by_procedures" context="{'group_by': 'required_for_procedures'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Document Template Action -->
+        <record id="action_govcon_document_template" model="ir.actions.act_window">
+            <field name="name">Document Templates</field>
+            <field name="res_model">govcon.document.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_sncc_standard': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No document templates found!
+                </p>
+                <p>
+                    Document templates include all 16 standard SNCC forms for Dominican Republic procurement.
+                </p>
+            </field>
+        </record>
+
+        <!-- Generated Document Form View -->
+        <record id="view_govcon_generated_document_form" model="ir.ui.view">
+            <field name="name">govcon.generated.document.form</field>
+            <field name="model">govcon.generated.document</field>
+            <field name="arch" type="xml">
+                <form string="Generated Document">
+                    <header>
+                        <button name="generate_document" string="Generate Document" 
+                                type="object" class="btn-primary" attrs="{'invisible': [('status', '=', 'generated')]}"/>
+                    </header>
+                    
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tender_id"/>
+                                <field name="template_id"/>
+                                <field name="document_name"/>
+                            </group>
+                            <group>
+                                <field name="generation_date"/>
+                                <field name="status"/>
+                                <field name="document_filename"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <field name="document_file" filename="document_filename" readonly="1"/>
+                            <field name="document_url" widget="url"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Generated Document Tree View -->
+        <record id="view_govcon_generated_document_tree" model="ir.ui.view">
+            <field name="name">govcon.generated.document.tree</field>
+            <field name="model">govcon.generated.document</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="document_name"/>
+                    <field name="tender_id"/>
+                    <field name="template_id"/>
+                    <field name="generation_date"/>
+                    <field name="status"/>
+                    <button name="generate_document" string="Generate" 
+                            type="object" attrs="{'invisible': [('status', '=', 'generated')]}"/>
+                    <button name="download_document" string="Download" 
+                            type="object" attrs="{'invisible': [('status', '!=', 'generated')]}"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Generated Document Action -->
+        <record id="action_govcon_generated_document" model="ir.actions.act_window">
+            <field name="name">Generated Documents</field>
+            <field name="res_model">govcon.generated.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No generated documents found!
+                </p>
+                <p>
+                    Generated documents are created from templates for specific tenders.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menus -->
+        <menuitem id="menu_govcon_document_template" name="Document Templates" parent="menu_govcon_root" action="action_govcon_document_template" sequence="30"/>
+        <menuitem id="menu_govcon_generated_document" name="Generated Documents" parent="menu_govcon_root" action="action_govcon_generated_document" sequence="40"/>
+    </data>
+</odoo> 

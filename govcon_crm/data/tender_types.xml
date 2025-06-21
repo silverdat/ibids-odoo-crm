@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- REGULAR PROCUREMENT PROCEDURES -->
+        <!-- Licitación Pública -->
+        <record id="tender_type_licitacion_publica" model="govcon.tender.type">
+            <field name="name">Licitación Pública</field>
+            <field name="code">LICIT_PUB</field>
+            <field name="description">Llamado público y abierto para bienes, servicios y obras con presupuesto superior al umbral establecido</field>
+            <field name="api_classification_keywords">licitación pública, licitacion publica, público, nacional, internacional</field>
+            <field name="sequence">10</field>
+        </record>
+        
+        <!-- Licitación Restringida -->
+        <record id="tender_type_licitacion_restringida" model="govcon.tender.type">
+            <field name="name">Licitación Restringida</field>
+            <field name="code">LICIT_REST</field>
+            <field name="description">Invitación directa a proveedores específicos con publicación en SECP</field>
+            <field name="api_classification_keywords">licitación restringida, licitacion restringida, restringida, invitación directa</field>
+            <field name="sequence">20</field>
+        </record>
+        
+        <!-- Subasta Inversa -->
+        <record id="tender_type_subasta_inversa" model="govcon.tender.type">
+            <field name="name">Subasta Inversa</field>
+            <field name="code">SUBASTA_INV</field>
+            <field name="description">Procedimiento para bienes comunes y estandarizados con puja electrónica</field>
+            <field name="api_classification_keywords">subasta inversa, puja electrónica, bienes comunes, estandarizados</field>
+            <field name="sequence">30</field>
+        </record>
+        
+        <!-- Sorteo de Obras -->
+        <record id="tender_type_sorteo_obras" model="govcon.tender.type">
+            <field name="name">Sorteo de Obras</field>
+            <field name="code">SORTEO_OBRAS</field>
+            <field name="description">Adjudicación de obras al azar después de evaluación de competencias técnicas</field>
+            <field name="api_classification_keywords">sorteo de obras, sorteo, obras, construcción, al azar</field>
+            <field name="sequence">40</field>
+        </record>
+        
+        <!-- Comparación de Precios -->
+        <record id="tender_type_comparacion_precios" model="govcon.tender.type">
+            <field name="name">Comparación de Precios</field>
+            <field name="code">COMP_PRECIOS</field>
+            <field name="description">Para bienes comunes con especificaciones estándar, servicios y obras menores</field>
+            <field name="api_classification_keywords">comparación de precios, comparacion de precios, bienes comunes, obras menores</field>
+            <field name="sequence">50</field>
+        </record>
+        
+        <!-- Compra Menor -->
+        <record id="tender_type_compra_menor" model="govcon.tender.type">
+            <field name="name">Compra Menor</field>
+            <field name="code">COMPRA_MENOR</field>
+            <field name="description">Trámite simplificado para montos dentro del umbral establecido</field>
+            <field name="api_classification_keywords">compra menor, trámite simplificado, umbral</field>
+            <field name="sequence">60</field>
+        </record>
+        
+        <!-- Compra por Debajo del Umbral -->
+        <record id="tender_type_debajo_umbral" model="govcon.tender.type">
+            <field name="name">Compra por Debajo del Umbral</field>
+            <field name="code">DEBAJO_UMBRAL</field>
+            <field name="description">Procedimiento simple para montos inferiores al umbral mínimo</field>
+            <field name="api_classification_keywords">debajo del umbral, umbral mínimo, procedimiento simple</field>
+            <field name="sequence">70</field>
+        </record>
+        
+        <!-- EXCEPTION PROCEDURES - COMPETITIVE SELECTION -->
+        <!-- Seguridad Nacional -->
+        <record id="tender_type_seguridad_nacional" model="govcon.tender.type">
+            <field name="name">Excepción - Seguridad Nacional</field>
+            <field name="code">EXC_SEG_NAC</field>
+            <field name="description">Procedimiento reservado para amenazas de seguridad nacional</field>
+            <field name="api_classification_keywords">seguridad nacional, defensa, reservado, secreto de estado</field>
+            <field name="sequence">100</field>
+        </record>
+        
+        <!-- Emergencia Nacional -->
+        <record id="tender_type_emergencia_nacional" model="govcon.tender.type">
+            <field name="name">Excepción - Emergencia Nacional</field>
+            <field name="code">EXC_EMERG_NAC</field>
+            <field name="description">Para catástrofes, crisis sanitarias, desabastecimiento</field>
+            <field name="api_classification_keywords">emergencia nacional, catástrofe, crisis sanitaria, pandemia, desabastecimiento</field>
+            <field name="sequence">110</field>
+        </record>
+        
+        <!-- Urgencia -->
+        <record id="tender_type_urgencia" model="govcon.tender.type">
+            <field name="name">Excepción - Urgencia</field>
+            <field name="code">EXC_URGENCIA</field>
+            <field name="description">Para necesidades fortuitas, inesperadas e imprevisibles</field>
+            <field name="api_classification_keywords">urgencia, fortuito, inesperado, imprevisible</field>
+            <field name="sequence">120</field>
+        </record>
+        
+        <!-- Exclusividad -->
+        <record id="tender_type_exclusividad" model="govcon.tender.type">
+            <field name="name">Excepción - Exclusividad</field>
+            <field name="code">EXC_EXCLUSIV</field>
+            <field name="description">Para bienes/servicios con máximo 5 proveedores especializados</field>
+            <field name="api_classification_keywords">exclusividad, especialidad, proveedores limitados</field>
+            <field name="sequence">130</field>
+        </record>
+        
+        <!-- MIPYMES -->
+        <record id="tender_type_mipymes" model="govcon.tender.type">
+            <field name="name">Excepción - MIPYMES</field>
+            <field name="code">EXC_MIPYMES</field>
+            <field name="description">Para promover micro, pequeñas y medianas empresas</field>
+            <field name="api_classification_keywords">mipymes, micro empresa, pequeña empresa, mediana empresa</field>
+            <field name="sequence">140</field>
+        </record>
+        
+        <!-- Rescisión de Contratos -->
+        <record id="tender_type_rescision" model="govcon.tender.type">
+            <field name="name">Excepción - Rescisión de Contratos</field>
+            <field name="code">EXC_RESCISION</field>
+            <field name="description">Para terminación de contratos rescindidos (max 40% del monto)</field>
+            <field name="api_classification_keywords">rescisión, terminación, 40%, rescindido</field>
+            <field name="sequence">150</field>
+        </record>
+        
+        <!-- EXCEPTION PROCEDURES - DIRECT SELECTION -->
+        <!-- Proveedor Único -->
+        <record id="tender_type_proveedor_unico" model="govcon.tender.type">
+            <field name="name">Excepción - Proveedor Único</field>
+            <field name="code">EXC_PROV_UNICO</field>
+            <field name="description">Para bienes/servicios insustituibles con un solo proveedor</field>
+            <field name="api_classification_keywords">proveedor único, insustituible, exclusivo, patente, marca exclusiva</field>
+            <field name="sequence">200</field>
+        </record>
+        
+        <!-- Obras Científicas/Técnicas/Artísticas -->
+        <record id="tender_type_obras_especiales" model="govcon.tender.type">
+            <field name="name">Excepción - Obras Científicas/Técnicas/Artísticas</field>
+            <field name="code">EXC_OBRAS_ESP</field>
+            <field name="description">Para obras científicas, técnicas, artísticas o restauración de monumentos</field>
+            <field name="api_classification_keywords">obras científicas, obras técnicas, obras artísticas, restauración, monumentos históricos</field>
+            <field name="sequence">210</field>
+        </record>
+        
+        <!-- Oficinas Servicio Exterior -->
+        <record id="tender_type_servicio_exterior" model="govcon.tender.type">
+            <field name="name">Excepción - Servicio Exterior</field>
+            <field name="code">EXC_SERV_EXT</field>
+            <field name="description">Para embajadas, consulados u oficinas fuera del territorio dominicano</field>
+            <field name="api_classification_keywords">servicio exterior, embajada, consulado, territorio dominicano</field>
+            <field name="sequence">220</field>
+        </record>
+        
+        <!-- Publicidad Medios Comunicación -->
+        <record id="tender_type_publicidad" model="govcon.tender.type">
+            <field name="name">Excepción - Publicidad</field>
+            <field name="code">EXC_PUBLICIDAD</field>
+            <field name="description">Para contratación directa de medios de comunicación social</field>
+            <field name="api_classification_keywords">publicidad, medios comunicación, medios sociales, difusión</field>
+            <field name="sequence">230</field>
+        </record>
+    </data>
+</odoo> 

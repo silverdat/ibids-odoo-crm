@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Tender Stages -->
+        <record id="stage_new" model="govcon.tender.stage">
+            <field name="name">New</field>
+            <field name="sequence">1</field>
+            <field name="is_default">True</field>
+        </record>
+        <record id="stage_qualifying" model="govcon.tender.stage">
+            <field name="name">Qualifying</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="stage_proposal" model="govcon.tender.stage">
+            <field name="name">Proposal/Bid Preparation</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="stage_submitted" model="govcon.tender.stage">
+            <field name="name">Submitted</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="stage_evaluation" model="govcon.tender.stage">
+            <field name="name">Under Evaluation</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="stage_won" model="govcon.tender.stage">
+            <field name="name">Won</field>
+            <field name="sequence">6</field>
+            <field name="is_won">True</field>
+        </record>
+        <record id="stage_lost" model="govcon.tender.stage">
+            <field name="name">Lost</field>
+            <field name="sequence">7</field>
+            <field name="fold">True</field>
+        </record>
+    </data>
+</odoo> 

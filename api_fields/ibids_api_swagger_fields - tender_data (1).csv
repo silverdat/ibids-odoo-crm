@@ -1,0 +1,25 @@
+field,description,datatype
+tender_id,,text
+procuring_entity,,text
+tender_value,,number
+description,,text
+all_tender_dates,returns all dates in the tenders timeline,datetime
+budget_appropriation_certificate,pdf,s3 link
+budget_appropriation_value,number,number
+budget_source,,text
+define_advance_payments,,boolean
+advance _payment_pct,,number
+define_warranties,,boolean
+seriousness_of_the_offer,,boolean
+offer_seriousness_pct,,number
+compliance,,boolean
+compliance_pct,,number
+extra_civil_contractual_liability,,boolean
+link_all_pliego_docs,,s3 link
+tender_messages,daily scrape to see if new comments/addenda are added,text
+tender_url,,url
+procurement_method,,text
+ibids_gpt_url,url to the tender in ibids gpt,url
+tender_mail_summary_gpt,summary of requirements for the tender included in the email,text
+tender_generator_link_other,"link for the generation of all the standard docs per the generator, replaced with the fields of the provider datas stored in provider profile, except for the f33",url
+f33_tender_link,link to the prep of the f33 form,url

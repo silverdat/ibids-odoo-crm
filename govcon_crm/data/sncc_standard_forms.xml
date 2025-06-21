@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- SNCC Standard Forms -->
+        
+        <!-- Compromiso Ético de Proveedores -->
+        <record id="form_compromiso_etico" model="govcon.document.template">
+            <field name="name">Compromiso Ético de Proveedores</field>
+            <field name="form_code">COMPROMISO_ETICO</field>
+            <field name="template_type">ethical_commitment</field>
+            <field name="document_category">commitment</field>
+            <field name="mandatory_fields_count">10</field>
+            <field name="estimated_completion_time">20</field>
+            <field name="requires_notarization">True</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">all</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.047 Autorización del Fabricante -->
+        <record id="form_sncc_f047" model="govcon.document.template">
+            <field name="name">SNCC.F.047 - Autorización del Fabricante</field>
+            <field name="form_code">SNCC.F.047</field>
+            <field name="template_type">manufacturer_auth</field>
+            <field name="document_category">authorization</field>
+            <field name="mandatory_fields_count">8</field>
+            <field name="estimated_completion_time">15</field>
+            <field name="requires_notarization">True</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">bienes</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.042 Formulario de Información sobre el Oferente -->
+        <record id="form_sncc_f042" model="govcon.document.template">
+            <field name="name">SNCC.F.042 - Formulario de Información sobre el Oferente</field>
+            <field name="form_code">SNCC.F.042</field>
+            <field name="template_type">bidder_info</field>
+            <field name="document_category">authorization</field>
+            <field name="mandatory_fields_count">25</field>
+            <field name="estimated_completion_time">45</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">all</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.037 Personal de Plantilla del Oferente -->
+        <record id="form_sncc_f037" model="govcon.document.template">
+            <field name="name">SNCC.F.037 - Personal de Plantilla del Oferente</field>
+            <field name="form_code">SNCC.F.037</field>
+            <field name="template_type">staff_personnel</field>
+            <field name="document_category">personnel</field>
+            <field name="mandatory_fields_count">12</field>
+            <field name="estimated_completion_time">30</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">servicios</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.036 Equipos del Oferente -->
+        <record id="form_sncc_f036" model="govcon.document.template">
+            <field name="name">SNCC.F.036 - Equipos del Oferente</field>
+            <field name="form_code">SNCC.F.036</field>
+            <field name="template_type">bidder_equipment</field>
+            <field name="document_category">equipment</field>
+            <field name="mandatory_fields_count">15</field>
+            <field name="estimated_completion_time">35</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">obras</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.035 Estructura para Brindar Soporte Técnico -->
+        <record id="form_sncc_f035" model="govcon.document.template">
+            <field name="name">SNCC.F.035 - Estructura para Brindar Soporte Técnico</field>
+            <field name="form_code">SNCC.F.035</field>
+            <field name="template_type">technical_support</field>
+            <field name="document_category">technical</field>
+            <field name="mandatory_fields_count">10</field>
+            <field name="estimated_completion_time">25</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">bienes</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.034 Presentación de Oferta -->
+        <record id="form_sncc_f034" model="govcon.document.template">
+            <field name="name">SNCC.F.034 - Presentación de Oferta</field>
+            <field name="form_code">SNCC.F.034</field>
+            <field name="template_type">bid_presentation</field>
+            <field name="document_category">compliance</field>
+            <field name="mandatory_fields_count">18</field>
+            <field name="estimated_completion_time">40</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">all</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.F.033 Oferta Económica -->
+        <record id="form_sncc_f033" model="govcon.document.template">
+            <field name="name">SNCC.F.033 - Oferta Económica</field>
+            <field name="form_code">SNCC.F.033</field>
+            <field name="template_type">economic_offer</field>
+            <field name="document_category">financial</field>
+            <field name="mandatory_fields_count">20</field>
+            <field name="estimated_completion_time">50</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">all</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.052 Carta de Aceptación de Designación como Agente Autorizado -->
+        <record id="form_sncc_d052" model="govcon.document.template">
+            <field name="name">SNCC.D.052 - Carta de Aceptación de Designación como Agente Autorizado</field>
+            <field name="form_code">SNCC.D.052</field>
+            <field name="template_type">agent_acceptance</field>
+            <field name="document_category">authorization</field>
+            <field name="mandatory_fields_count">6</field>
+            <field name="estimated_completion_time">10</field>
+            <field name="requires_notarization">True</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">international_scope</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.051 Carta de Designación o Sustitución de Agente Autorizado -->
+        <record id="form_sncc_d051" model="govcon.document.template">
+            <field name="name">SNCC.D.051 - Carta de Designación o Sustitución de Agente Autorizado</field>
+            <field name="form_code">SNCC.D.051</field>
+            <field name="template_type">agent_designation</field>
+            <field name="document_category">authorization</field>
+            <field name="mandatory_fields_count">8</field>
+            <field name="estimated_completion_time">15</field>
+            <field name="requires_notarization">True</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">international_scope</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.049 Experiencia como Contratista -->
+        <record id="form_sncc_d049" model="govcon.document.template">
+            <field name="name">SNCC.D.049 - Experiencia como Contratista</field>
+            <field name="form_code">SNCC.D.049</field>
+            <field name="template_type">contractor_experience</field>
+            <field name="document_category">experience</field>
+            <field name="mandatory_fields_count">22</field>
+            <field name="estimated_completion_time">60</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">obras</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.048 Experiencia Profesional del Personal Principal -->
+        <record id="form_sncc_d048" model="govcon.document.template">
+            <field name="name">SNCC.D.048 - Experiencia Profesional del Personal Principal</field>
+            <field name="form_code">SNCC.D.048</field>
+            <field name="template_type">professional_experience</field>
+            <field name="document_category">experience</field>
+            <field name="mandatory_fields_count">16</field>
+            <field name="estimated_completion_time">45</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">consultoria</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.045 Currículo del Personal Profesional Propuesto -->
+        <record id="form_sncc_d045" model="govcon.document.template">
+            <field name="name">SNCC.D.045 - Currículo del Personal Profesional Propuesto</field>
+            <field name="form_code">SNCC.D.045</field>
+            <field name="template_type">professional_cv</field>
+            <field name="document_category">personnel</field>
+            <field name="mandatory_fields_count">14</field>
+            <field name="estimated_completion_time">35</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">consultoria</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.044 Descripción del Enfoque Metodología y Plan de Actividades -->
+        <record id="form_sncc_d044" model="govcon.document.template">
+            <field name="name">SNCC.D.044 - Descripción del Enfoque Metodología y Plan de Actividades</field>
+            <field name="form_code">SNCC.D.044</field>
+            <field name="template_type">methodology_plan</field>
+            <field name="document_category">methodology</field>
+            <field name="mandatory_fields_count">25</field>
+            <field name="estimated_completion_time">90</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">consultoria</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.043 Organización y Experiencia del Consultor -->
+        <record id="form_sncc_d043" model="govcon.document.template">
+            <field name="name">SNCC.D.043 - Organización y Experiencia del Consultor</field>
+            <field name="form_code">SNCC.D.043</field>
+            <field name="template_type">consultant_organization</field>
+            <field name="document_category">experience</field>
+            <field name="mandatory_fields_count">18</field>
+            <field name="estimated_completion_time">55</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">consultoria</field>
+            <field name="auto_generate">True</field>
+        </record>
+
+        <!-- SNCC.D.038 Garantía de Fiel Cumplimiento de Contrato -->
+        <record id="form_sncc_d038" model="govcon.document.template">
+            <field name="name">SNCC.D.038 - Garantía de Fiel Cumplimiento de Contrato</field>
+            <field name="form_code">SNCC.D.038</field>
+            <field name="template_type">performance_guarantee</field>
+            <field name="document_category">guarantee</field>
+            <field name="mandatory_fields_count">12</field>
+            <field name="estimated_completion_time">25</field>
+            <field name="requires_notarization">True</field>
+            <field name="is_sncc_standard_form">True</field>
+            <field name="required_for_procedures">all</field>
+            <field name="auto_generate">True</field>
+        </record>
+    </data>
+</odoo> 
